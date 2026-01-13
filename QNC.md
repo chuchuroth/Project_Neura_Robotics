@@ -1,3 +1,8 @@
+回到原始文件（xiyao），连接线路
+
+
+
+---
 Since you are onboarding onto a hardware-software hybrid project (an **End-of-Arm Tooling** or **EoAT** project), your process is more complex than a standard software-only role. You need to understand the mechanical constraints, the electrical power requirements, and the communication logic.
 
 Here is a step-by-step roadmap to get you "up to speed."
