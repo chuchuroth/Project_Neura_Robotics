@@ -5,6 +5,8 @@ run code on cm5 (Moritz email)
 
 把cm5的code push gitlab
 
+update confluence with test result
+
 
 ---
 Since you are onboarding onto a hardware-software hybrid project (an **End-of-Arm Tooling** or **EoAT** project), your process is more complex than a standard software-only role. You need to understand the mechanical constraints, the electrical power requirements, and the communication logic.
