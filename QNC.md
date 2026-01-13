@@ -10,6 +10,9 @@ update confluence with test result
 email to Moritz & update jira
 
 
+看最近的笔记
+
+
 ---
 Since you are onboarding onto a hardware-software hybrid project (an **End-of-Arm Tooling** or **EoAT** project), your process is more complex than a standard software-only role. You need to understand the mechanical constraints, the electrical power requirements, and the communication logic.
 
