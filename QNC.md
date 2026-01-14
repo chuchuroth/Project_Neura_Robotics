@@ -1,16 +1,3 @@
-回到原始文件（xiyao），连接线路
-
-run code on cm5 (Moritz email) 
-
-
-把cm5的code push gitlab
-
-update confluence with test result
-
-email to Moritz & update jira
-
-
-看最近的笔记
 
 
 ---
