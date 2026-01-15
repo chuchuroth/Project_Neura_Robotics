@@ -1,33 +1,19 @@
-周一的presentation基于此文：
 
 
 
- 导航
- 灵巧手
- 视觉AI
- 语言AI
- 传感器
- 执行器
  
  
-按摩机器人：灵巧手另外单卖，稍贵
+ 
+i want to show you this list to give you an idea how big of market this is, and if we are providing this platform, with millions of end-effector compatible with our robot, we will be initiating an ecosystem instead of just shipping one product. it is a very good position to be in.
 
-基础功能：机器人助手，语音聊天，端盘子，图像识别物体，导航，搬东西
-
-高级功能：手，触感，做几款精确度不一样的灵巧手，根据实际需要做选择。
-
-
- make it work
- make it right
- make it fast
 
 
 
 ---
-list all the options , trade offs.
-我不做决定，我只提供选择和建议，并把各个决定的优缺点一一列出。
 
-和neurasnyc dashboard一起测试，显示数据流量
+
+
+
 
 if it's difficult to make decision, we make many prototype, it's easier to make choices with prototype. in real life, you go shopping, you thought you want something instead you bought something else. also market will tell the truth.
 
