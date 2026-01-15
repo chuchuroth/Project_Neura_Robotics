@@ -4,8 +4,11 @@
 (humoid hand vs end effektor) there is no right or wrong. 
 but if we move fast, our way will be the standard way. 
 
+---
+手画：
+detour - 机器人工具手直接完成任务 vs 先花大力气造人手，精确度低，技术瓶颈难突破，然后用这只笨手去使用工具，完成任务
 
- ---
+---
  
  
 i want to show you this list to give you an idea how big of market this is, and if we are providing this platform, with millions of end-effector compatible with our robot, we will be initiating an ecosystem instead of just shipping one product. it is a very good position to be in.
