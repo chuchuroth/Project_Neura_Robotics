@@ -14,7 +14,8 @@ detour - 机器人工具手直接完成任务，高效且精确 vs 先花大力�
 i want to show you this list to give you an idea how big of market this is, and if we are providing this platform, with millions of end-effector compatible with our robot, we will be initiating an ecosystem instead of just shipping one product. it is a very good position to be in.
 
 
-
+---
+ 目前三大闭源机器人流派 ...
 
 ---
 
