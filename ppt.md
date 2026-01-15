@@ -4,6 +4,8 @@
 (humoid hand vs end effektor) there is no right or wrong. 
 but if we move fast, our way will be the standard way. 
 
+if we aew the first to make moves, we get to set the standards for this industry.
+
 ---
 手画：
 detour - 机器人工具手直接完成任务，高效且精确 vs 先花大力气造人手，精确度低，技术瓶颈难突破，然后用这只笨手去使用工具，完成任务
