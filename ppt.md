@@ -32,15 +32,7 @@ list all the options , trade offs.
 if it's difficult to make decision, we make many prototype, it's easier to make choices with prototype. in real life, you go shopping, you thought you want something instead you bought something else. also market will tell the truth.
 
 
-软件架构，把简单的功能做到极致，AI与传感器融合，互相抵消对方的弱点，如果”思考能力”不足，可以用hardcode代替某些智能效果，比如预设30个常用动作，50个标准程序，让机器人看上去很聪明，宇树也是提前预设的动作，这些动作不需要穷尽所有scenario，当然也无法穷尽生活中所有scenario，一些边缘case，cover不到也没关系，很少发生这种情况，只需要守住安全底线，动作不那么精确也无妨。
 
-AI可以有，但不应该主要依赖于AI，嵌入式的发展已经很成熟了。什么时候AI介入，用户可以自行解除AI模式（比如当效率大大受限时）。。
-
-
-* 如果完全按照嵌入式的思路做机器人，以实用为主旨，怎样的模式paradigm A
-* 如果完全按照端到端技术做机器人，以模仿人类的行为为主旨，paradigm B
-* more practical, focusing on completing tasks,or more human-like, focusing on cognition capability
-* 如果两者融合，怎样的才合理
 
 工业设计角度，paradigm A 和B 设计的理念肯定不同，endeffector就不同，一个必须实用，一个必须向人。参照汽车工业，设计一款大众喜爱的产品，先入为主，以后的家用服务型机器人就该长这样，不大不小。另外根据各个年龄各个群体的喜好设计不同风格造型，内核不需要改变，换壳即为新品。
 
