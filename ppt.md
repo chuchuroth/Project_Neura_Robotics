@@ -1,4 +1,3 @@
-i had couple of ideas and try to get you on board.
 
 
 
