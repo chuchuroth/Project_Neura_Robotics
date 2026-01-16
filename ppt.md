@@ -21,6 +21,8 @@
  
 i want to show you this list to give you an idea how big of market this is, and if we are providing this platform, with millions of end-effector compatible with our robot, we will be initiating an ecosystem instead of just shipping one product. it is a very good position to be in.
 
+we will be building products that is more reliable than a half-dead human hand, built based on embedded system world which is alredy developing for decades now.
+
 
 ---
  
