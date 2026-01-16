@@ -16,8 +16,6 @@ but if we move fast, our way will be the standard way.
 if we aew the first to make moves, we get to set the standards for this industry.
 
 ---
-手画：
-detour - 机器人工具手直接完成任务，高效且精确 vs 先花大力气造人手，精确度低，技术瓶颈难突破，然后用这只笨手去使用工具，完成任务
 
 ---
  
@@ -27,7 +25,16 @@ i want to show you this list to give you an idea how big of market this is, and 
 
 ---
  目前三大闭源机器人流派 ...
-
+全栈整合派（代表：Tesla Optimus, Figure AI）：
+核心信念是软硬深度耦合，认为基础模型不能脱离硬件独立存在。
+特斯拉利用FSD的积累尝试从“轮式机器人”转向“足式机器人”，但面临“人机物理鸿沟（Embodiment Gap）”导致的数据迁移难题。
+Figure AI则采用**System 1（小脑/反应）与System 2（大脑/思考）**的双系统架构，并在2025年宣布脱离OpenAI独立自研基础模型。
+垂直突破派（代表：Dyna Robotics, 亚马逊）：
+核心理念是**“从小而精到泛化”**，先在垂直场景（如折叠毛巾/衣服）做到极致，培养机器人的“元学习”能力，再迁移至其他场景。
+该派别认为机器人的缩放定律（Scaling Law）与语言模型不同，高质量的真实物理交互数据比单纯增加参数量更重要。
+生态平台派（代表：NVIDIA, Google, OpenAI, Meta）：
+目标是制定行业标准，控制生态。例如英伟达通过开源GR00T N1来锁定用户使用其全套工具链。
+这一派系打赌“通用性”最终来自于生态的标准化，而非单一技术路线的胜负。
 ---
 
 
