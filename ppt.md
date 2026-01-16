@@ -55,9 +55,6 @@ Let me show you a list of end-effectors just to give you a sense of how large th
 
 
 
-if it's difficult to make decision, we make many prototype, it's easier to make choices with prototype. in real life, you go shopping, you thought you want something instead you bought something else. also market will tell the truth.
-
-
 
 
 
