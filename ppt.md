@@ -1,3 +1,11 @@
+i had couple of ideas and try to get you on board.
+
+since this version is already in production pahse, it make no sense to uplift or do radical changement.  consider cost effective.
+
+
+---
+
+
 (baby protector) i really like this idea, i think we should patent it. before someone else took it.
 
 ---
