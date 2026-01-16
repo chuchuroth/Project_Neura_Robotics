@@ -7,11 +7,11 @@ The second idea is bit next level, has little to do with mipa, but i want to sha
 
 In one sentence, the idea is: **building a standardized robotic platform that can be equipped for any task, and establishing the interface as a standard for all physical hardware.**
 
-The architecture should be classical, minimalist, with simplified functionality, zero redundancy, and a strong emphasis on safety. It should be compatible with third-party ecosystems, effectively creating a ‘railroad’ for the industry—built on our foundation and our groundwork. This platform would be based on the embedded-systems industry, which has been developing for decades, and we would have an entire manufacturing ecosystem supporting it.
+The architecture should be classical, minimalist, with simplified functionality, zero redundancy, and a strong emphasis on safety. It should be compatible with third-party ecosystems, effectively creating a ‘railroad’ for the industry—built on our foundation and our groundwork. 
 
 If we are the first to deliver such a platform, there could be hundreds of end-effectors compatible with our robot. In that case, we would be launching an ecosystem rather than merely shipping a single product.
 
-Let me show you a list of end-effectors just to give you a sense of how large this market could be. For each end-effector, a new skill would be delivered via the Neuraverse, and with each new skill plus its corresponding end-effector, the robot effectively becomes a new service robot. This approach would result in a product that is far more reliable than a half-functional humanoid hand.”
+Let me show you a list of end-effectors just to give you a sense of how large this market could be. For each end-effector, a new skill would be delivered via the Neuraverse, and with each new skill plus its corresponding end-effector, the robot effectively becomes a new service robot. This approach would result in a product that is far more reliable than a half-functional humanoid hand which is difficult to perfection, our robot would be eaiser to perfection because it is based on the embedded-systems industry, which has been developing for decades, and we would have an entire manufacturing ecosystem supporting it.
 
 
 
