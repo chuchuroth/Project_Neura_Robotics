@@ -1,13 +1,6 @@
 
 
 
-i have this next level idea i want to share with you.
-
-
-starting from scrach is easier.
-
-
-
 
 
 
