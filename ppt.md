@@ -21,7 +21,7 @@
  
 
 
-we will be building products that is more reliable than a half-dead human hand, built based on embedded system world which is alredy developing for decades now. we basically got a whole manufacture industry behind our back.
+
 
 
 ---
