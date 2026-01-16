@@ -3,6 +3,11 @@ todos:
 test gripper with neurasync dashboard to visulize the data
 
 
+---
+tips 
+
+* put reading documents into project folder for claude as references 
+
 
 
 ---
