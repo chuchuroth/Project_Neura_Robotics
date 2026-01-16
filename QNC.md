@@ -1,3 +1,15 @@
+todos:
+
+test gripper with neurasync dashboard to visulize the data
+
+
+
+
+---
+---
+---
+---
+---
 
 
 ---
