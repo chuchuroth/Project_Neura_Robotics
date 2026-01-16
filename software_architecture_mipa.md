@@ -1,3 +1,13 @@
+start with a minimum version of software, since this version is already in production pahse, it make no sense to uplift or do radical changement.  consider cost effective.
+for now just to make the most of the current work.
+
+
+i have this next level idea i want to share with you.
+
+---
+---
+
+
 # MiPA-X Minimum Viable Software Architecture
 
 **Version**: 1.0 (MVP)
@@ -1083,6 +1093,202 @@ This foundation is designed to be incrementally improved as better AI models and
 ---
 ---
 
+# CURRENT STATUS
+
+# MiPA X Refactoring Plan
+
+## Overview
+Refactoring mipax codebase into MiPA X - a modular, high-performance mobile robot platform with real-time control and distributed autonomy.
+
+## Package Renaming Strategy
+
+### Core Packages Mapping
+
+| Original Package | New Package | Description |
+|-----------------|-------------|-------------|
+| `mipax` | `mipax` | Meta-package for MiPA X |
+| `mipax_base` | `mipax_base` | Base configurations, EKF filter, ros2_control HAL |
+| `mipax_bringup` | `mipax_bringup` | Launch files for system startup |
+| `mipax_description` | `mipax_description` | URDF/xacro robot models |
+| `mipax_gazebo` | `mipax_gazebo` | Gazebo simulation integration |
+| `mipax_navigation` | `mipax_navigation` | Nav2 integration and path planning |
+| `mipax_neuraverse` | `mipax_neuraverse` | Neuraverse Skills integration |
+
+### New Architecture Components
+
+Additional packages to emphasize MiPA X architecture:
+
+1. **mipax_control** (enhanced from mipax_base)
+   - 1ms real-time chassis control loop
+   - ros2_control hardware interface
+   - CAN communication with STM32H7
+   - Motor control abstractions
+
+2. **mipax_perception** (new)
+   - Sensor fusion for Jetson AGX Orin
+   - Camera/LIDAR integration
+   - Perception pipeline
+
+3. **mipax_skills** (enhanced from mipax_neuraverse)
+   - Neuraverse Skills integration
+   - High-level behavior trees
+   - Multi-robot coordination
+
+## Directory Structure
+
+```
+mipax/
+├── mipax/                          # Meta-package
+├── mipax_base/                     # Base configurations
+│   ├── config/
+│   │   ├── ekf.yaml
+│   │   └── control.yaml
+│   └── include/mipax_base/
+├── mipax_control/                  # Real-time control (1ms loop)
+│   ├── include/mipax_control/
+│   │   ├── hardware_interface.hpp
+│   │   └── can_interface.hpp
+│   └── src/
+├── mipax_bringup/                  # Launch files
+│   ├── launch/
+│   └── config/
+├── mipax_description/              # Robot models
+│   ├── urdf/
+│   ├── meshes/
+│   └── launch/
+├── mipax_gazebo/                   # Simulation
+│   ├── worlds/
+│   └── launch/
+├── mipax_navigation/               # Nav2 integration
+│   ├── config/
+│   ├── maps/
+│   └── launch/
+├── mipax_perception/               # Perception (new)
+│   ├── launch/
+│   └── config/
+└── mipax_skills/                   # Neuraverse Skills
+    ├── launch/
+    ├── config/
+    └── skills/
+```
+
+## Key Changes
+
+### 1. Hardware Architecture Updates
+- Emphasize Jetson AGX Orin as main compute platform
+- Highlight STM32H7 real-time control loop (1ms)
+- CAN bus communication layer
+- Modular hardware abstraction layer (HAL)
+
+### 2. Control System Updates
+- Update ros2_control configuration for 1ms loop
+- CAN interface for STM32H7 communication
+- Motor controller abstraction
+- Real-time guarantees
+
+### 3. Neuraverse Integration
+- Replace upper-level logic with Neuraverse Skills
+- Integration with NeuraSync dashboard
+- Multi-robot coordination primitives
+
+### 4. Documentation Updates
+- New README emphasizing MiPA X architecture
+- JetPack SDK integration notes
+- Nav2 distributed architecture
+- Multi-robot capabilities
+
+## Refactoring Steps
+
+### Phase 1: Package Renaming (Automated)
+1. Rename all package directories
+2. Update package.xml files
+3. Update CMakeLists.txt files
+4. Clean build/install directories
+
+### Phase 2: Content Updates (Automated)
+1. Update all source file includes
+2. Update launch file references
+3. Update URDF/xacro namespace references
+4. Update configuration files
+
+### Phase 3: Architecture Enhancement (Manual)
+1. Add mipax_control package with STM32H7 interface
+2. Add mipax_perception package
+3. Enhance mipax_skills with Neuraverse integration
+4. Update hardware_interface for 1ms control loop
+
+### Phase 4: Documentation (Automated)
+1. Create comprehensive MiPA X README
+2. Update architecture documentation
+3. Create integration guides
+4. Update NeuraSync dashboard integration
+
+### Phase 5: Testing & Validation
+1. Rebuild workspace
+2. Test launch files
+3. Verify simulation
+4. Test NeuraSync integration
+
+## File Pattern Replacements
+
+### Global Search & Replace Patterns
+
+| Pattern | Replacement | Scope |
+|---------|------------|-------|
+| `mipax` | `mipax` | All files (case-sensitive) |
+| `mipax` | `MIPAX` | Environment variables, macros |
+| `mipax` | `MipaX` | Documentation, titles |
+
+### Preserve These Patterns
+- Git history references to mipax
+- External dependency references
+- Original author attributions
+
+## Rollback Strategy
+
+Before refactoring:
+1. Create git branch: `git checkout -b mipax-refactor`
+2. Tag current state: `git tag pre-mipax-refactor`
+3. Backup build/install: `tar -czf mipax-backup.tar.gz build install`
+
+## Success Criteria
+
+- [ ] All packages renamed successfully
+- [ ] Workspace builds without errors
+- [ ] All launch files functional
+- [ ] Simulation runs correctly
+- [ ] NeuraSync dashboard connects
+- [ ] Documentation updated
+- [ ] No broken references in code
+
+## Timeline
+
+- Phase 1: 30 minutes (automated)
+- Phase 2: 1 hour (automated)
+- Phase 3: 2-4 hours (manual enhancement)
+- Phase 4: 1 hour (documentation)
+- Phase 5: 1 hour (testing)
+
+**Total: ~5-7 hours**
+
+## Notes
+
+- Preserve all ros2_control and hardware_interface foundations
+- Maintain backward compatibility where possible
+- Document breaking changes
+- Update NeuraSync integration scripts
+- Consider migration path for existing users
+
+---
+
+**Status**: Ready to execute
+**Created**: 2026-01-12
+**Target Platform**: Jetson AGX Orin + STM32H7
+
+---
+---
+
+
 # MiPA-X Hardware Architecture
 
 **Version**: 3.1
@@ -1460,3 +1666,758 @@ The MiPA-X architecture is centered around high-compute modules for vision and A
 *Last Updated: 2026-01-12*
 *Architecture Version: 3.1*
 *Next Revision: v3.71 (Structural optimization)*
+
+
+---
+---
+
+The architecture is centered around high-compute modules for vision and AI, interconnected via a high-speed network.
+
+---
+
+## 1. Core Compute & Vision Processing
+
+The system utilizes a dual-processor approach for high-level tasks:
+
+* 
+**Dual NVIDIA Jetson Orin Modules:** These serve as the primary "brains" for the robot. They handle intensive tasks such as:
+
+
+* 
+**Vision:** Processing data from RGBD cameras with specific fields of view (e.g.,  Horizontal FOV).
+
+
+* 
+**Streaming:** Handling video feeds at 720p resolution (approx. 1280x720) at 30FPS.
+
+
+
+
+* 
+**Audio Processing:** Includes a dedicated subsystem for audio streaming, microphone arrays, and echo cancellation.
+
+
+
+## 2. Structural Segmentation
+
+The diagram explicitly divides the hardware into two main zones:
+
+* 
+**Upper Body (上半身):** Contains the Jetson Orin modules, the **Verdin iMX8M Plus** (an ARM-based System-on-Module), and a power distribution board. It also interfaces with a **Robotic Arm**.
+
+
+* 
+**Chassis/Base (底盘):** Focuses on mobility, safety, and power. It houses:
+
+
+* An **Industrial PC (IPC) running ROS** (Robot Operating System).
+
+
+* A **48V Battery** system.
+
+
+* Safety components like an **Emergency Stop Button** (急停按钮) and physical switches.
+
+
+
+
+
+## 3. Sensors and Connectivity
+
+* 
+**Navigation Sensors:** The chassis includes an **IMU** (Inertial Measurement Unit), **Ultrasonic Sensors** positioned on all four sides (front, rear, left, right) for obstacle detection, and **Indicator Lights**.
+
+
+* 
+**Networking:** The system uses a **1Gbps (1000 Mbps) Ethernet** backbone. There is a specific technical note clarifying that bandwidth units are in **Mb/s (megabits)** rather than MB/s (megabytes) to avoid configuration errors.
+
+
+* 
+**Wireless:** Support for Dual-band Wi-Fi and Bluetooth 5.0 is integrated for external communication.
+
+
+
+## 4. Observations and Design Notes
+
+* 
+**Development Maturity:** The document includes "Closed Comments" and "Future Improvement" sections, suggesting this is an evolving design (Version 3.1).
+
+
+* 
+**Integration Suggestion:** One specific comment (source 34) suggests that placing a certain component "directly in the chassis might be more appropriate," indicating ongoing optimization of weight distribution or cable management.
+
+
+
+---
+---
+Specific details regarding the identification (ID) and Field of View (FOV) of the robotic platform's sensory systems.
+
+## 1. Sensory Field of View (FOV) Specifications
+
+The document details various FOV parameters for the robot's high-resolution cameras:
+
+* **Horizontal FOV (HFOV):** The platform features a wide-angle sensing capability with a **190°** horizontal field of view.
+* **Vertical FOV (VFOV):** The vertical coverage is specified at **114°**.
+* **Secondary Sensor FOV:** A separate RGBD camera configuration is noted with an HFOV of **86°** and a VFOV of **58°**.
+
+## 2. Project and Component ID Details
+
+The documentation lists specific identifiers for the hardware and data streams:
+
+* **Processing Units:** The architecture confirms the use of **NVIDIA Jetson Orin** modules as the primary compute hubs.
+* **Data Stream ID:** A specific stream is identified as "720P" with a resolution of **1280x720**.
+* **Control Boards:** The system integrates a **Verdin iMX8M Plus** and a dedicated **MCU + Power Board** for low-level control.
+
+## 3. Communication and Network ID
+
+* **Bandwidth Note:** There is a clear distinction made for the network ID, specifying that the data rate is measured in **Mb/s**, not MB/s, to ensure technical accuracy during system configuration.
+* **Interface ID:** The primary network backbone is identified as a **1Gbps / 1000 Mbps** Ethernet interface.
+
+---
+---
+here is the mapping of the sensory systems and their specific FOV (Field of View) parameters within the robot's physical architecture.
+
+## Sensory Mapping & Specifications
+
+| Sensor Category | Component / ID | Placement | Field of View (FOV) |
+| --- | --- | --- | --- |
+| **Wide-Angle Vision** | RGBD Camera 
+
+ | Upper Body 
+
+ | <br>**190° Horizontal** / **114° Vertical** 
+
+ |
+| **Secondary Vision** | RGBD Camera 
+
+ | Upper Body 
+
+ | <br>**86° Horizontal** / **58° Vertical** 
+
+ |
+| **Obstacle Detection** | Ultrasonic Sensors 
+
+ | Chassis (Front, Rear, Left, Right) 
+
+ | Not specified (Proximity based) 
+
+ |
+| **Motion Tracking** | IMU 
+
+ | Chassis 
+
+ | N/A (Internal orientation) 
+
+ |
+
+---
+
+## Detailed Component Analysis
+
+### Upper Body Vision Hub
+
+* 
+**Primary Processing:** The **NVIDIA Jetson Orin** modules process high-resolution video streams (720P / 1280x720).
+
+
+* 
+**Camera Integration:** The wide-angle cameras (190° HFOV) are connected via an **Adapter Board** to the Orin modules to facilitate complex spatial awareness.
+
+
+* 
+**Manipulator Feedback:** A **Robotic Arm** is integrated into this section, likely utilizing the 86° FOV cameras for localized tasks.
+
+
+
+### Chassis Navigation & Safety
+
+* 
+**Spatial Awareness:** Four **Ultrasonic Sensors** provide 360-degree proximity coverage around the base.
+
+
+* 
+**System Control:** An **Industrial PC (IPC)** running **ROS** serves as the central node for the chassis, coordinating the IMU and sensor data.
+
+
+* 
+**Safety Interlocks:** The **Emergency Stop (急停按钮)** and **48V Battery** management are physically housed here to ensure low-level hardware safety.
+
+
+
+### Network Infrastructure
+
+* 
+**Bandwidth Capacity:** The system utilizes a **1Gbps (1000 Mbps)** Ethernet backbone.
+
+
+* 
+**Data Accuracy Note:** Technical documentation emphasizes that bandwidth measurements are calculated in **Mb/s** (Megabits per second) to prevent confusion with Megabytes (MB/s).
+
+
+---
+---
+here is the mapping of the platform's connectivity and sensory systems.
+
+### 1. Data & Compute Connectivity
+
+The system uses a hierarchical communication structure to link the high-level "brains" in the upper body with the low-level controllers in the chassis.
+
+* 
+**High-Speed Backbone:** A **1Gbps (1000 Mbps)** Ethernet network serves as the primary data highway between the upper body compute modules and the chassis.
+
+
+* 
+**Upper Body Hub:** * Dual **NVIDIA Jetson Orin** modules handle heavy vision processing (720P streams).
+
+
+* A **Verdin iMX8M Plus** System-on-Module (SoM) acts as a bridge, likely managing local control and interfacing with the **Robotic Arm**.
+
+
+
+
+* 
+**Chassis Integration:** * An **Industrial PC (IPC)** running **ROS** (Robot Operating System) manages base navigation.
+
+
+* A dedicated **MCU (Microcontroller)** handles power distribution and low-level hardware like the **IMU** and **Indicator Lights**.
+
+
+* 
+**Wireless:** The platform includes **Dual-band Wi-Fi** and **Bluetooth 5.0** for external connectivity.
+
+
+
+
+
+---
+
+### 2. Sensory FOV & Placement Mapping
+
+The "X Project" utilizes a multi-layered sensor suite for 360° awareness and precise manipulation.
+
+| Sensor Type | Field of View (FOV) | Primary Function | Placement |
+| --- | --- | --- | --- |
+| **Fish-eye Camera** | <br>**120° HFOV** 
+
+ | Wide-area surround view | Front & Rear 
+
+ |
+| **Depth Camera (Base)** | <br>**86° HFOV / 58° VFOV** 
+
+ | Obstacle & ground detection | Base/Chassis 
+
+ |
+| **335LG Sensor** | <br>**18° VFOV** 
+
+ | Precision depth/ranging | Height-specific mounting 
+
+ |
+| **3D LiDAR** | <br>**360° Horizontal** 
+
+ | SLAM and mapping | Center-mounted on base 
+
+ |
+| **Ultrasonic** | <br>**75° Sensing Angle** 
+
+ | Close-range collision avoidance | 8 sensors around the base 
+
+ |
+
+### 3. Physical Layout & Safety
+
+* 
+**Linear Elevation:** The **Robotic Arm** is mounted on a linear axis with a **600mm** lift range.
+
+
+* 
+**Safety Interlocks:** A physical **Emergency Stop Button** is integrated into the chassis, noted as being moved downward in the V3.1 revision due to internal space constraints.
+
+
+* 
+**User Interface:** The robot features a **13.3-inch touchscreen** for direct human interaction.
+
+
+* 
+**Power:** The entire platform is powered by a **48V Battery** system , with a dedicated display on the body to check internal battery data.
+
+---
+---
+
+# MiPA-X Sensor Configuration Guide
+
+**Version**: 3.1
+**Last Updated**: 2026-01-12
+**Related**: [HARDWARE_ARCHITECTURE.md](HARDWARE_ARCHITECTURE.md), [mipax_sensory_system_mapping.md](mipax_sensory_system_mapping.md)
+
+---
+
+## Overview
+
+This document provides a comprehensive mapping of all sensors in the MiPA-X robotic platform, including their Field of View (FOV) specifications, physical placement, ROS 2 topic mappings, and configuration file locations.
+
+---
+
+## Sensor Inventory
+
+### Vision Sensors Summary
+
+| Sensor ID | Type | FOV | Resolution | Rate | Location | URDF File |
+|-----------|------|-----|------------|------|----------|-----------|
+| `camera` | Wide-Angle RGBD | 190°H / 114°V | 1280x720 | 30Hz | Upper Body | [depth_sensor.urdf.xacro](mipax/mipax_description/urdf/sensors/depth_sensor.urdf.xacro) |
+| `secondary_camera` | Secondary RGBD | 86°H / 58°V | 640x480 | 30Hz | Upper Body | [secondary_depth_sensor.urdf.xacro](mipax/mipax_description/urdf/sensors/secondary_depth_sensor.urdf.xacro) |
+| `fisheye_front` | Fish-eye Camera | 120°H | 1920x1080 | 30Hz | Front | [fisheye_camera.urdf.xacro](mipax/mipax_description/urdf/sensors/fisheye_camera.urdf.xacro) |
+| `fisheye_rear` | Fish-eye Camera | 120°H | 1920x1080 | 30Hz | Rear | [fisheye_camera.urdf.xacro](mipax/mipax_description/urdf/sensors/fisheye_camera.urdf.xacro) |
+| `sensor_335lg` | Precision Depth | 18°V / 30°H | 640x480 | 30Hz | Height-specific | [sensor_335lg.urdf.xacro](mipax/mipax_description/urdf/sensors/sensor_335lg.urdf.xacro) |
+
+### Navigation Sensors Summary
+
+| Sensor ID | Type | FOV/Range | Update Rate | Location | URDF File |
+|-----------|------|-----------|-------------|----------|-----------|
+| `lidar_3d` | 3D LiDAR | 360°H / ±15°V | 10Hz | Base Center | [lidar_3d.urdf.xacro](mipax/mipax_description/urdf/sensors/lidar_3d.urdf.xacro) |
+| `laser` | 2D LiDAR | 360° / 0.21-5.5m | 10Hz | Base | [laser.urdf.xacro](mipax/mipax_description/urdf/sensors/laser.urdf.xacro) |
+| `imu` | IMU (6-DOF) | N/A | 50-100Hz | Chassis | [imu.urdf.xacro](mipax/mipax_description/urdf/sensors/imu.urdf.xacro) |
+| `ultrasonic_array` | 8× Ultrasonic | 75° each / 0.02-4.0m | 30Hz | Base Perimeter | [ultrasonic_array.urdf.xacro](mipax/mipax_description/urdf/sensors/ultrasonic_array.urdf.xacro) |
+
+---
+
+## Detailed Sensor Specifications
+
+### 1. Wide-Angle RGBD Camera
+
+**Sensor ID**: `camera`
+**Type**: RGBD (Color + Depth)
+**Location**: Upper Body - Primary Vision
+
+#### Field of View
+- **Horizontal FOV**: 190° (3.316 radians)
+- **Vertical FOV**: 114° (1.989 radians)
+- **Purpose**: Primary spatial awareness and environment understanding
+
+#### Technical Specifications
+- **Resolution**: 1280 × 720 (720p)
+- **Frame Rate**: 30 Hz
+- **Depth Range**: 0.3m to 100m
+- **Format**: R8G8B8
+
+#### ROS 2 Topics
+- `/camera/image`: RGB image
+- `/camera/depth/image_raw`: Raw depth image
+- `/camera/depth/image_rect_raw`: Rectified depth image
+- `/camera/camera_info`: Camera calibration info
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/depth_sensor.urdf.xacro](mipax/mipax_description/urdf/sensors/depth_sensor.urdf.xacro)
+- **Launch**: [mipax/mipax_bringup/launch/depth.launch.py](mipax/mipax_bringup/launch/depth.launch.py)
+
+---
+
+### 2. Secondary RGBD Camera
+
+**Sensor ID**: `secondary_camera`
+**Type**: RGBD (Color + Depth)
+**Location**: Upper Body - Manipulation Zone
+
+#### Field of View
+- **Horizontal FOV**: 86° (1.501 radians)
+- **Vertical FOV**: 58° (1.012 radians)
+- **Purpose**: Localized manipulation and robotic arm feedback
+
+#### Technical Specifications
+- **Resolution**: 640 × 480 (VGA)
+- **Frame Rate**: 30 Hz
+- **Depth Range**: 0.3m to 100m
+- **Format**: R8G8B8
+- **Mass**: 0.120 kg
+
+#### ROS 2 Topics
+- `/secondary_camera/image`: RGB image
+- `/secondary_camera/depth/image_raw`: Raw depth image
+- `/secondary_camera/camera_info`: Camera calibration info
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/secondary_depth_sensor.urdf.xacro](mipax/mipax_description/urdf/sensors/secondary_depth_sensor.urdf.xacro)
+
+---
+
+### 3. Fish-eye Cameras (Front & Rear)
+
+**Sensor IDs**: `fisheye_front`, `fisheye_rear`
+**Type**: Wide-angle Fish-eye Camera
+**Location**: Front & Rear of Upper Body
+
+#### Field of View
+- **Horizontal FOV**: 120° (2.094 radians)
+- **Purpose**: Wide-area surround view for situational awareness
+
+#### Technical Specifications
+- **Resolution**: 1920 × 1080 (Full HD)
+- **Frame Rate**: 30 Hz
+- **Range**: 0.1m to 50m
+- **Format**: R8G8B8
+- **Distortion**: Fish-eye lens model (k1=-0.15, k2=0.05)
+- **Mass**: 0.050 kg per camera
+
+#### ROS 2 Topics
+- `/fisheye_front/image`: Front camera RGB image
+- `/fisheye_rear/image`: Rear camera RGB image
+- `/fisheye_front/camera_info`: Front camera info
+- `/fisheye_rear/camera_info`: Rear camera info
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/fisheye_camera.urdf.xacro](mipax/mipax_description/urdf/sensors/fisheye_camera.urdf.xacro)
+
+---
+
+### 4. 335LG Precision Depth Sensor
+
+**Sensor ID**: `sensor_335lg`
+**Type**: Precision Depth Sensor
+**Location**: Height-specific mounting (moved downward in v3.1)
+
+#### Field of View
+- **Vertical FOV**: 18° (0.314 radians)
+- **Horizontal FOV**: 30° (0.523 radians)
+- **Purpose**: Precision depth/ranging for specific tasks
+
+#### Technical Specifications
+- **Resolution**: 640 × 480
+- **Frame Rate**: 30 Hz
+- **Range**: 0.2m to 10.0m
+- **Format**: R8G8B8
+- **Mass**: 0.040 kg
+
+#### ROS 2 Topics
+- `/sensor_335lg/depth`: Depth image
+- `/sensor_335lg/camera_info`: Sensor info
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/sensor_335lg.urdf.xacro](mipax/mipax_description/urdf/sensors/sensor_335lg.urdf.xacro)
+
+---
+
+### 5. 3D LiDAR
+
+**Sensor ID**: `lidar_3d`
+**Type**: 3D Scanning LiDAR
+**Location**: Center-mounted on Base
+
+#### Field of View
+- **Horizontal FOV**: 360° (full rotation)
+- **Vertical FOV**: ±15° (16-32 layers)
+- **Purpose**: SLAM and environmental mapping
+
+#### Technical Specifications
+- **Horizontal Samples**: 1800 points per rotation
+- **Vertical Layers**: 16 (configurable to 32)
+- **Update Rate**: 10 Hz
+- **Range**: 0.3m to 100m
+- **Resolution**: 0.01m
+- **Mass**: 0.830 kg
+
+#### ROS 2 Topics
+- `/lidar_3d/points`: Point cloud data (sensor_msgs/PointCloud2)
+- `/lidar_3d/scan`: Converted 2D scan if needed
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/lidar_3d.urdf.xacro](mipax/mipax_description/urdf/sensors/lidar_3d.urdf.xacro)
+
+---
+
+### 6. 2D LiDAR (Legacy/Simulation)
+
+**Sensor ID**: `laser`
+**Type**: 2D Laser Scanner
+**Location**: Base
+
+#### Field of View
+- **Horizontal FOV**: 360° (-π to +π)
+- **Purpose**: 2D obstacle detection and navigation
+
+#### Technical Specifications
+- **Ray Count**: 360
+- **Update Rate**: 10 Hz
+- **Range**: 0.21m to 5.5m (base) / 0.08m to 12.0m (generic)
+- **Angular Resolution**: 1° per sample
+
+#### ROS 2 Topics
+- `/scan`: Laser scan data (sensor_msgs/LaserScan)
+- `/base/scan`: Base-specific scan
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/laser.urdf.xacro](mipax/mipax_description/urdf/sensors/laser.urdf.xacro)
+- **Launch**: [mipax/mipax_bringup/launch/lasers.launch.py](mipax/mipax_bringup/launch/lasers.launch.py)
+
+#### Supported Hardware
+- YDLIDAR, LD06, LD19, STL27L
+- RPLiDAR (A1, A2, A3, C1, S1, S2, S3)
+- XV11
+
+---
+
+### 7. IMU (Inertial Measurement Unit)
+
+**Sensor ID**: `imu`
+**Type**: 6-DOF IMU
+**Location**: Chassis
+
+#### Specifications
+- **Data**: Acceleration (m/s²), Angular Velocity (rad/s), Orientation (quaternion)
+- **Update Rate**: 50-100 Hz
+- **Purpose**: Motion tracking and sensor fusion
+
+#### ROS 2 Topics
+- `/imu/data`: Filtered IMU data (sensor_msgs/Imu)
+- `/imu/data_raw`: Raw IMU data (sensor_msgs/Imu)
+- `/imu/mag`: Magnetometer data (sensor_msgs/MagneticField)
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/imu.urdf.xacro](mipax/mipax_description/urdf/sensors/imu.urdf.xacro)
+- **EKF Config**: [mipax/mipax_base/config/ekf.yaml](mipax/mipax_base/config/ekf.yaml)
+
+#### Integration
+- **EKF Fusion**: 50 Hz filter frequency
+- **Input**: IMU yaw angular velocity + wheel odometry
+- **Output**: `/odom` (fused odometry)
+
+---
+
+### 8. Ultrasonic Sensor Array
+
+**Sensor Array ID**: `ultrasonic_array`
+**Type**: 8× Ultrasonic Proximity Sensors
+**Location**: Base Perimeter (360° coverage)
+
+#### Placement
+1. `ultrasonic_front_left` - Front-Left
+2. `ultrasonic_front_right` - Front-Right
+3. `ultrasonic_right_front` - Right-Front
+4. `ultrasonic_right_rear` - Right-Rear
+5. `ultrasonic_rear_right` - Rear-Right
+6. `ultrasonic_rear_left` - Rear-Left
+7. `ultrasonic_left_rear` - Left-Rear
+8. `ultrasonic_left_front` - Left-Front
+
+#### Specifications
+- **Sensing Angle**: 75° per sensor
+- **Range**: 0.02m to 4.0m
+- **Update Rate**: 30 Hz per sensor
+- **Purpose**: Close-range collision avoidance
+- **Mass**: 0.010 kg per sensor
+
+#### ROS 2 Topics
+Each sensor publishes to its own topic:
+- `/ultrasonic_front_left`: Range data
+- `/ultrasonic_front_right`: Range data
+- `/ultrasonic_right_front`: Range data
+- ... (8 topics total)
+
+#### Configuration Files
+- **URDF**: [mipax/mipax_description/urdf/sensors/ultrasonic_array.urdf.xacro](mipax/mipax_description/urdf/sensors/ultrasonic_array.urdf.xacro)
+
+---
+
+## Sensor Integration Architecture
+
+### Upper Body Vision Hub
+```
+┌─────────────────────────────────────────────────┐
+│          Dual NVIDIA Jetson Orin                │
+│                                                  │
+│  ┌──────────────┐  ┌──────────────┐            │
+│  │ Wide-Angle   │  │ Secondary    │            │
+│  │ RGBD Camera  │  │ RGBD Camera  │            │
+│  │ 190°H/114°V  │  │ 86°H/58°V    │            │
+│  └──────────────┘  └──────────────┘            │
+│                                                  │
+│  ┌──────────────┐  ┌──────────────┐            │
+│  │ Fish-eye     │  │ Fish-eye     │            │
+│  │ Front 120°   │  │ Rear 120°    │            │
+│  └──────────────┘  └──────────────┘            │
+│                                                  │
+│  ┌──────────────┐                               │
+│  │ 335LG Sensor │                               │
+│  │ 18°V Precision│                              │
+│  └──────────────┘                               │
+└─────────────────────────────────────────────────┘
+```
+
+### Chassis Navigation & Safety
+```
+┌─────────────────────────────────────────────────┐
+│         Industrial PC (ROS 2)                    │
+│                                                  │
+│  ┌──────────────┐  ┌──────────────┐            │
+│  │ 3D LiDAR     │  │ IMU          │            │
+│  │ 360°H/±15°V  │  │ 6-DOF        │            │
+│  └──────────────┘  └──────────────┘            │
+│                                                  │
+│  ┌─────────────────────────────────────────┐   │
+│  │   Ultrasonic Array (8 sensors)          │   │
+│  │   75° each, 360° coverage               │   │
+│  └─────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────┘
+```
+
+---
+
+## Supported Camera Drivers
+
+### Depth Camera Support
+Configured in [mipax/mipax_bringup/launch/depth.launch.py](mipax/mipax_bringup/launch/depth.launch.py):
+
+- **Intel RealSense**: D435, D435i
+- **Stereolabs ZED**: ZED, ZED2, ZED2i, ZED Mini
+- **OAK-D**: OAK-D, OAK-D-LITE, OAK-D-PRO
+
+### ZED Camera Configuration
+File: [mipax/mipax_bringup/config/zed_common.yaml](mipax/mipax_bringup/config/zed_common.yaml)
+
+- **Resolution**: 2 (HD720 - 1280x720)
+- **Grab Frame Rate**: 30 Hz
+- **Publish Frame Rate**: 15 Hz
+- **Depth Quality**: PERFORMANCE mode
+- **Confidence Threshold**: 50
+- **Point Cloud Rate**: 10 Hz
+
+---
+
+## Sensor Frame Hierarchy
+
+```
+base_link
+├── camera_link (Wide-angle RGBD)
+│   └── camera_depth_link
+├── secondary_camera_link (Secondary RGBD)
+│   └── secondary_camera_depth_link
+├── fisheye_front_link
+│   └── fisheye_front_optical_link
+├── fisheye_rear_link
+│   └── fisheye_rear_optical_link
+├── sensor_335lg_link
+│   └── sensor_335lg_optical_link
+├── lidar_3d_link
+├── laser_link (2D LiDAR)
+├── imu_link
+├── ultrasonic_front_left_link
+├── ultrasonic_front_right_link
+├── ultrasonic_right_front_link
+├── ultrasonic_right_rear_link
+├── ultrasonic_rear_right_link
+├── ultrasonic_rear_left_link
+├── ultrasonic_left_rear_link
+└── ultrasonic_left_front_link
+```
+
+---
+
+## Performance Specifications
+
+### Expected Data Rates
+
+| Sensor | Update Rate | Bandwidth (Est.) |
+|--------|-------------|------------------|
+| Wide-Angle RGBD | 30 Hz | ~55 MB/s |
+| Secondary RGBD | 30 Hz | ~18 MB/s |
+| Fish-eye Front | 30 Hz | ~60 MB/s |
+| Fish-eye Rear | 30 Hz | ~60 MB/s |
+| 335LG | 30 Hz | ~18 MB/s |
+| 3D LiDAR | 10 Hz | ~5 MB/s |
+| 2D LiDAR | 10 Hz | ~50 KB/s |
+| IMU | 100 Hz | ~15 KB/s |
+| Ultrasonic (×8) | 30 Hz | ~2 KB/s |
+| **Total** | - | **~216 MB/s** |
+
+### Network Capacity
+- **Ethernet Backbone**: 1 Gbps (125 MB/s)
+- **Utilization**: ~173% (requires data compression or selective streaming)
+
+---
+
+## Configuration References
+
+### Key Configuration Files
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| **Sensor URDF** | [mipax/mipax_description/urdf/sensors/](mipax/mipax_description/urdf/sensors/) | Robot sensor models |
+| **Depth Launch** | [mipax/mipax_bringup/launch/depth.launch.py](mipax/mipax_bringup/launch/depth.launch.py) | Depth camera launch |
+| **Laser Launch** | [mipax/mipax_bringup/launch/lasers.launch.py](mipax/mipax_bringup/launch/lasers.launch.py) | LiDAR launch |
+| **ZED Config** | [mipax/mipax_bringup/config/zed_common.yaml](mipax/mipax_bringup/config/zed_common.yaml) | ZED camera params |
+| **EKF Config** | [mipax/mipax_base/config/ekf.yaml](mipax/mipax_base/config/ekf.yaml) | IMU fusion config |
+
+---
+
+## Related Documentation
+
+- [HARDWARE_ARCHITECTURE.md](HARDWARE_ARCHITECTURE.md) - Complete hardware architecture
+- [mipax_architecture_diagram.md](mipax_architecture_diagram.md) - Architecture diagram notes
+- [mipax_sensory_system_mapping.md](mipax_sensory_system_mapping.md) - Original sensor mapping spec
+- [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) - ROS 2 + Dashboard integration
+
+---
+
+*Last Updated: 2026-01-12*
+*Configuration Version: 3.1*
+*Sensor Count: 15 sensors (5 vision, 1 3D LiDAR, 1 2D LiDAR, 1 IMU, 8 ultrasonic)*
+
+---
+---
+Based on the "Product Improvement List," the "X Project" robotic platform is undergoing significant updates to its physical structure, production processes, and core hardware integration to improve serviceability and performance.
+
+The following is a summary of the key improvement areas and current issues:
+
+### 1. Structural & Design Improvements
+
+A major focus is on optimizing the robot's physical layout for better usability and maintenance:
+
+* 
+**Battery Accessibility**: The current battery position is difficult to access, preventing users from swapping it autonomously; a design optimization is planned for version v3.71.
+
+
+* **Chassis Size Optimization**: The current chassis exceeds the original design dimensions and needs to be reduced.
+* **Module Relocation**: There is a high-priority request to move primary compute modules like the **NVIDIA Jetson Orin** into the chassis, though this may conflict with chassis size reduction goals.
+* 
+**Aesthetic & Safety Refinement**: The 13.3-inch touchscreen needs to be made flush with the housing , and the **Emergency Stop Button** and certain sensors (335LG) are being moved downward due to internal space constraints.
+
+
+
+### 2. Production & Electrical Standardization
+
+To ensure consistent quality across units, several process improvements are being implemented:
+
+* 
+**Wiring Standards**: Plans are in place to use cable trays, label all wires, and separate power from signal cables to prevent interference.
+
+
+* 
+**Environmental Protection**: Conformal coating will be applied to exposed PCBs to protect against dust and moisture.
+
+
+* 
+**Interface Stability**: Structural adhesive or silicone will be used at cable interfaces to prevent damage from stress or bending.
+
+
+
+### 3. Robotic Arm & Payload
+
+The platform's dual robotic arms are being evaluated for workspace and performance gains:
+
+* 
+**Workspace Optimization**: Engineers are looking into increasing the joint angles (specifically joints J2, J4, and J6) to improve the elbow and wrist workspace, though this depends on the final housing design.
+
+
+* 
+**Payload Limitations**: While there was a request to increase the payload to ~7.5kg and the arm length to 900mm, current assessments indicate these specific targets are not achievable with the current hardware.
+
+
+
+### 4. Critical Hardware Issues
+
+Recent field reports have identified urgent hardware failures:
+
+* **Motor Failure**: A front-right drive motor recently burnt out, leading to a temporary loss of base mobility.
+* **Maintenance Difficulty**: The current base structure makes it extremely difficult to perform maintenance when such failures occur, necessitating a structural optimization in version v3.71.
+
+### 5. Regulatory & Shipping
+
+* **Certification**: The robot currently lacks **CE certification**, which requires it to be shipped in separate parts rather than as a complete unit to clear customs.
