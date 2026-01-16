@@ -4,6 +4,16 @@ for now just to make the most of the current work.
 
 i have this next level idea i want to share with you.
 
+
+# first chapter , current settings of mipa
+sensory system : how to make the most of it with the status quo
+
+# chapter two, my software structure , 
+
+simplified architecture, priorities safety, basic functionality , minimalistic, reduce sensor, keep the ones only necessary, make each sensor useful remove the redundant 
+
+# chapter three, next level idea
+
 ---
 ---
 
