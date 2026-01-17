@@ -1,3 +1,6 @@
+先把mipa的配置背一背，显得你很熟悉产品。
+
+---
 
 “I have two proposals.
 
